@@ -10,10 +10,10 @@ class Log:
 	def __init__(self, name):
 		self.name = name
 
-	def Enter(self):
+	def Enter(self, message):
 		self.__print("ENTER")
 	
-	def Exit(self):
+	def Exit(self, message):
 		self.__print("EXIT ")
 
 	def Trace(self, message):
@@ -34,7 +34,7 @@ class Log:
 	def Fatal(self, message):
 		self.__print("FATAL", message)
 
-	def __print(self, type, message = ""):
+	def __print(self, type, message):
 		if not os.path.exists("logs"):
 			os.mkdir("logs")
 		
@@ -43,10 +43,5 @@ class Log:
 		hora = time.strftime("%H:%M:%S")
 		
 		fich = open("logs/"+fichero, "a")
-		
-		if message == "":
-			fich.write("{0} {1} {2} {3}\n".format(fecha, hora, type, self.name))
-		else:
-			fich.write("{0} {1} {2} {3} : {4}\n".format(fecha, hora, type, self.name, message))
-		
+		fich.write("{0} {1} {2} {3} : {4}\n".format(fecha, hora, type, self.name, message))
 		fich.close()
