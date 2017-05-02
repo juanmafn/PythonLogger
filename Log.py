@@ -11,10 +11,10 @@ class Log:
 		self.name = name
 
 	def Enter(self, message):
-		self.__print("ENTER")
+		self.__print("ENTER", message)
 	
 	def Exit(self, message):
-		self.__print("EXIT ")
+		self.__print("EXIT ", message)
 
 	def Trace(self, message):
 		self.__print("TRACE", message)
